@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --color-limestone: #f3eee4;
+  --color-paper: #e8e0d0;
+  --color-cream: #f7f3ea;
+  --color-ink: #1b1814;
+  --color-ink-soft: #3d372e;
+  --color-mute: #72695c;
+  --color-line: #d4cbb8;
+  --color-night: #14110e;
+  --color-night-soft: #221e19;
+  --color-bronze: #7a6248;
+
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-he: "Frank Ruhl Libre", "Fraunces", serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-limestone);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-limestone);
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  [dir="rtl"] {
+    --font-display: "Frank Ruhl Libre", "Fraunces", serif;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+  }
+
+  .hero-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(3.15rem, 1.6rem + 6vw, 6.1rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  .body-copy {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+  }
+
+  .cta {
+    display: inline-flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+
+  .cta-fill {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    border-color: var(--color-cream);
+  }
+
+  .cta-fill:hover {
+    background: var(--color-limestone);
+  }
+
+  .cta-ink {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border-color: var(--color-ink);
+  }
+
+  .cta-ink:hover {
+    background: var(--color-night);
+  }
+
+  .cta-ghost {
+    background: transparent;
+    color: var(--color-cream);
+    border-color: color-mix(in oklab, var(--color-cream) 35%, transparent);
+  }
+
+  .cta-ghost:hover {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    border-color: var(--color-cream);
+  }
+
+  .cta-line {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: color-mix(in oklab, var(--color-ink) 20%, transparent);
+  }
+
+  .cta-line:hover {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border-color: var(--color-ink);
+  }
+
+  .mark {
+    border-bottom: 1px dashed color-mix(in oklab, var(--color-ink) 35%, transparent);
+    background: color-mix(in oklab, var(--color-paper) 70%, transparent);
+    font-style: italic;
+    padding-inline: 0.15rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
